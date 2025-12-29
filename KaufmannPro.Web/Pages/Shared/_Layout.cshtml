@@ -1,0 +1,90 @@
+﻿@* Pages/Shared/_Layout.cshtml *@
+@using DevExtreme.AspNet.Mvc
+@using System.Reflection;
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+
+    <link href="~/css/devextreme/theme.base.css" rel="stylesheet" />
+    <link href="~/css/Site.css" rel="stylesheet" />
+
+    <script src="~/js/devextreme/jquery.js"></script>
+    <script src="~/js/devextreme/dx.all.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.mvc.js"></script>
+    <script src="https://cdn3.devexpress.com/jslib/latest/js/localization/dx.messages.de.js"></script>
+
+    <script>
+        DevExpress.localization.locale("de");
+    </script>
+</head>
+
+<body class="dx-viewport">
+
+    <!-- HEADER -->
+    <header class="layout-header">
+        @(Html.DevExtreme().Menu()
+                .ID("mainMenu")
+                .Orientation(Orientation.Horizontal)
+                .CssClass("main-menu")
+                .SelectionMode(MenuSelectionMode.Single)
+                .SelectByClick(true)
+                .Items(items =>
+                {
+                    items.Add().Icon("home").Option("name", "home");
+                    items.Add().Text("Mandanten").Icon("user");
+                    items.Add().Text("Stammdaten").Icon("preferences");
+                    items.Add().Text("Auftrag").Icon("edit");
+                    items.Add().Text("Bestellungen").Icon("cart");
+                    items.Add().Text("Finanzen").Icon("money");
+                    items.Add().Text("Zahlungen").Icon("card");
+                    items.Add().Text("Auswertungen").Icon("chart");
+                    items.Add().Text("Dienste").Icon("toolbox");
+                    items.Add().Text("Extras").Icon("fields");
+                    items.Add().Text("Ansicht").Icon("pinmap");
+                })
+                .OnItemClick("KaufmannPro.onMainMenuClick")
+                )
+    </header>
+
+    <!-- BODY -->
+    <div class="layout-body">
+
+        <!-- SUBMENÜ -->
+        <aside id="submenu-container">
+            @(Html.DevExtreme().TreeView()
+                        .ID("submenuTree")   // ← exakt so
+                        .Width(250)
+                        .SelectionMode(NavSelectionMode.Single)
+                        .ExpandNodesRecursive(false)
+                        .OnItemClick("KaufmannPro.onSubmenuClick")
+                        )
+        </aside>
+
+        <!-- CONTENT -->
+        <main id="main-content">
+            @RenderBody()
+        </main>
+
+        <!-- RECHTS -->
+        <aside id="right-panels">
+            <div class="content-panel">Kalender</div>
+            <div class="content-panel">Termine</div>
+        </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        © @DateTime.Now.Year |
+        Version @Assembly.GetEntryAssembly()?.GetName().Version |
+        KaufmannPro |
+        @ViewData["Title"]
+    </footer>
+
+    <script src="~/js/navigation.js"></script>
+
+</body>
+</html>

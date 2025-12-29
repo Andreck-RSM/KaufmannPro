@@ -1,0 +1,57 @@
+﻿@page
+@model KaufmannPro.Web.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<link href="~/css/dashboard.css" rel="stylesheet" />
+
+<div class="dashboard-page">
+
+    <!-- ================= NAVIGATION ================= -->
+    <section class="dashboard-section">
+        <header class="section-header">
+            Navigation
+        </header>
+
+        <div class="section-body">
+            @(Html.DevExtreme().TabPanel()
+                        .Height("100%")
+                        .Items(items =>
+                        {
+                            items.Add().Title("Grundlagen").Template(@<text>Navigation Inhalt 1</text>);
+                            items.Add().Title("Aufträge").Template(@<text>Navigation Inhalt 2</text>);
+                            items.Add().Title("Finanzen").Template(@<text>Navigation Inhalt 3</text>);
+                            items.Add().Title("Services").Template(@<text>Navigation Inhalt 4</text>);
+                            items.Add().Title("Info").Template(@<text>Navigation Inhalt 5</text>);
+                        })
+                        )
+        </div>
+    </section>
+
+    <!-- ================= STATISTIK ================= -->
+    <section class="dashboard-section">
+        <header class="section-header">
+            Statistik
+        </header>
+
+        <div class="section-body">
+            @(Html.DevExtreme().TabPanel()
+                        .Height("100%")
+                        .Items(items =>
+                        {
+                            items.Add().Title("Artikelumsätze").Template(@<text>Statistik Inhalt 1</text>);
+                            items.Add().Title("Kundenumsätze").Template(@<text>Statistik Inhalt 2</text>);
+                            items.Add().Title("Lieferantenumsätze").Template(@<text>Statistik Inhalt 3</text>);
+                            items.Add().Title("Offene Posten").Template(@<text>Statistik Inhalt 4</text>);
+                            items.Add().Title("Vorgangsliste").Template(@<text>Statistik Inhalt 5</text>);
+                            items.Add().Title("Umsatzübersicht").Template(@<text>Statistik Inhalt 6</text>);
+                            items.Add().Title("Finanzkonten").Template(@<text>Statistik Inhalt 7</text>);
+                            items.Add().Title("USt.-Zahllast").Template(@<text>Statistik Inhalt 8</text>);
+                            items.Add().Title("Geschäftsstatistik").Template(@<text>Statistik Inhalt 9</text>);
+                        })
+                        )
+        </div>
+    </section>
+
+</div>

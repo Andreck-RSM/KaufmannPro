@@ -1,0 +1,39 @@
+﻿@page
+@model KaufmannPro.Web.Pages.Account.LoginModel
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Anmelden";
+}
+
+<div class="login-container">
+    <!-- Logo -->
+    <img src="~/images/logo.png" alt="KaufmannPro Logo" class="login-logo" />
+
+    <!-- Titel -->
+    <h2 class="login-title">Anmelden</h2>
+
+    <!-- Formular -->
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Input.Username">Benutzername</label>
+            <input asp-for="Input.Username" class="form-control" />
+            <span asp-validation-for="Input.Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Input.Password">Passwort</label>
+            <input asp-for="Input.Password" type="password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-block">Anmelden</button>
+
+        <!-- Fehlermeldungen -->
+        <div class="text-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <div>@error.ErrorMessage</div>
+            }
+        </div>
+    </form>
+</div>

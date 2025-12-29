@@ -1,0 +1,90 @@
+﻿/* =========================
+   Gesamte Dashboard-Seite
+   ========================= */
+.dashboard-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Abstand zwischen den Blöcken */
+    padding: 5px; /* Abstand zum Content-Rand */
+    box-sizing: border-box;
+}
+
+/* =========================
+   Dashboard-Sektion (Navigation / Statistik)
+   ========================= */
+.dashboard-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+/* Überschrift */
+.section-header {
+    padding: 6px 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: #f5f5f5;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+/* Inhalt (TabPanel) */
+.section-body {
+    flex: 1;
+    padding: 4px; /* Luft zwischen Header und Tabs */
+    overflow: hidden;
+}
+
+    /* DevExtreme TabPanel Höhe korrekt */
+    .section-body .dx-tabpanel {
+        height: 100%;
+    }
+
+    /* =========================
+   DevExtreme Tabs – Active Style
+   ========================= */
+
+    /* Aktiver Tab – grauer Hintergrund */
+    .section-body .dx-tab.dx-state-selected .dx-tab-text {
+        background-color: #e0e0e0;
+        font-weight: 600;
+        border-radius: 4px 4px 0 0;
+    }
+
+    /* Unterstrich entfernen (DevExtreme Pseudo-Element) */
+    .section-body .dx-tab.dx-state-selected::after {
+        display: none;
+    }
+
+    /* Hover-Effekt */
+    .section-body .dx-tab:hover:not(.dx-state-selected) .dx-tab-text {
+        background-color: #f0f0f0;
+    }
+
+    /* Tab-Container optisch ruhiger */
+    .section-body .dx-tabs {
+        border-bottom: 1px solid #ccc;
+    }
+
+    /* Abstand zwischen Tabs minimal angenehmer */
+    .section-body .dx-tab {
+        margin-right: 2px;
+    }
+
+/* =========================
+   Hauptmenü – aktives Item
+   ========================= */
+.main-menu .dx-item.dx-item-selected {
+    background-color: #e0e0e0; /* gleiche Farbe wie aktive Tabs */
+    font-weight: 600;
+}
+
+/* Hover-Effekt Hauptmenü */
+.main-menu .dx-item:hover:not(.dx-item-selected) {
+    background-color: #f0f0f0;
+}
